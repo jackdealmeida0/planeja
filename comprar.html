@@ -4,11 +4,13 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Comprar o Planeja Pro</title>
+  <meta name="description" content="Planeja Pro: Análise, Orçamento geral, Projeção de saldo, Metas, Investimentos, Excel do mês e importação de faturas. R$ 29,90, pagamento único.">
   <link rel="stylesheet" href="style.css">
   <!--
-    QUANDO O CHECKOUT EXISTIR: troque o href do botão "Comprar agora" (id="link-compra")
-    pelo link do Mercado Pago / Kiwify / Hotmart. O app aponta sempre para esta página,
-    então trocar de plataforma não exige nova versão do app.
+    QUANDO O CHECKOUT EXISTIR (Kiwify): troque o href dos botões com a classe
+    "link-compra" pelo link do checkout e apague o bloco id="contato-compra".
+    O app aponta sempre para esta página, então trocar de plataforma não exige
+    nova versão do app.
   -->
 </head>
 <body>
@@ -25,31 +27,87 @@
 <main>
   <div class="wrap">
     <h1>Planeja Pro</h1>
-    <p class="lead">Libera todas as telas e recursos. Pagamento único, sem mensalidade.</p>
-    <p style="font-size:2rem;font-weight:700;margin:0">R$ 29,90 <span style="font-size:1rem;font-weight:400;color:var(--muted)">pagamento único · preço de lançamento</span></p>
-    <p class="note" style="margin-top:4px">Compre uma vez e use para sempre, sem mensalidade.</p>
+    <p class="lead">Libera todas as telas e recursos do Planeja. Pagamento único, sem mensalidade.</p>
+    <p class="price">R$ 29,90 <span>pagamento único · preço de lançamento</span></p>
+    <p class="note" style="margin-top:4px">Compre uma vez e use para sempre. Seus dados continuam só no seu computador.</p>
+    <p style="margin-top:20px"><a class="btn link-compra" href="#contato-compra">Comprar agora</a></p>
 
+    <h2>O que o Pro libera</h2>
+    <p class="note">Imagens do Planeja com dados de demonstração.</p>
+
+    <section class="feature">
+      <div class="feature-text">
+        <h3>📊 Análise</h3>
+        <p>Veja para onde vai o seu dinheiro: gastos por categoria, por cartão e a evolução dos últimos meses, em gráficos fáceis de ler.</p>
+      </div>
+      <img class="shot" src="img/analise.jpg" alt="Tela Análise do Planeja com gráficos de gastos por categoria e por cartão" loading="lazy">
+    </section>
+
+    <section class="feature">
+      <div class="feature-text">
+        <h3>🧮 Orçamento geral</h3>
+        <p>Divida a renda entre Necessidades, Qualidade de vida e Geração de patrimônio e compare o planejado com o realizado em cada mês.</p>
+      </div>
+      <img class="shot" src="img/orcamento.jpg" alt="Tela Orçamento geral do Planeja" loading="lazy">
+    </section>
+
+    <section class="feature">
+      <div class="feature-text">
+        <h3>📈 Projeção de saldo</h3>
+        <p>Saiba quanto vai sobrar nos próximos 12 meses, já contando faturas parceladas, receitas, contas e aportes.</p>
+      </div>
+      <img class="shot" src="img/projecao.jpg" alt="Tela Projeção de saldo do Planeja com 12 meses" loading="lazy">
+    </section>
+
+    <section class="feature">
+      <div class="feature-text">
+        <h3>🎯 Metas</h3>
+        <p>Planeje viagem, reserva de emergência, carro novo… e acompanhe quanto já foi guardado e quanto falta.</p>
+      </div>
+      <img class="shot" src="img/metas.jpg" alt="Tela Metas e objetivos do Planeja" loading="lazy">
+    </section>
+
+    <section class="feature">
+      <div class="feature-text">
+        <h3>💰 Investimentos</h3>
+        <p>Registre aportes e resgates e acompanhe a evolução da sua carteira mês a mês.</p>
+      </div>
+      <img class="shot" src="img/investimentos.jpg" alt="Tela Investimentos do Planeja" loading="lazy">
+    </section>
+
+    <h2>E mais</h2>
     <div class="grid">
-      <div class="card"><h3>Tudo liberado</h3><p>Análise, Orçamento geral, Projeção de saldo, Metas e Investimentos.</p></div>
-      <div class="card"><h3>Cartões ilimitados</h3><p>Cadastre quantos cartões quiser.</p></div>
-      <div class="card"><h3>Excel completo</h3><p>Planilha do mês formatada, com resumo e gráficos.</p></div>
-      <div class="card"><h3>Importar faturas</h3><p>Traga as faturas do banco em PDF, CSV ou Word.</p></div>
+      <div class="card"><h3>📑 Excel do mês</h3><p>Planilha do mês formatada, com resumo, gráficos e uma cópia completa do histórico.</p></div>
+      <div class="card"><h3>📥 Importar faturas</h3><p>Traga as compras da fatura do banco a partir de PDF, CSV, Excel ou Word, sem digitar uma por uma.</p></div>
+      <div class="card"><h3>💳 Cartões ilimitados</h3><p>A versão gratuita vai até 2 cartões. No Pro, cadastre quantos quiser.</p></div>
     </div>
 
     <h2>Como funciona</h2>
     <ol>
       <li>Clique em <strong>Comprar agora</strong> e pague por Pix ou cartão.</li>
       <li>Você recebe a <strong>chave de ativação</strong> no e-mail informado na compra.</li>
-      <li>No Planeja, abra <em>Backup e Segurança → Planeja Pro</em>, cole a chave e pronto.</li>
+      <li>No Planeja, abra <em>Backup e Segurança → Planeja Pro</em>, cole a chave e clique em <strong>Ativar</strong>.</li>
     </ol>
+    <p class="note">A chave funciona sem internet. Nenhum dado financeiro sai do seu computador.</p>
 
-    <p style="margin-top:24px">
-      <a class="btn" id="link-compra" href="mailto:jackdealmeida0@gmail.com?subject=Quero%20o%20Planeja%20Pro">Comprar agora</a>
-    </p>
-    <p class="note">Vendas online em breve. Por enquanto, o botão abre um e-mail para combinarmos a compra.</p>
+    <div class="card buy" id="contato-compra">
+      <h3>Comprar o Planeja Pro — R$ 29,90</h3>
+      <p>As vendas online abrem em breve. Por enquanto, a compra é feita por e-mail: escreva para</p>
+      <p class="email-line">
+        <strong id="email-vendas">jackdealmeida0@gmail.com</strong>
+        <button type="button" class="btn sec small" id="copiar-email">Copiar e-mail</button>
+      </p>
+      <p>com o assunto <strong>“Quero o Planeja Pro”</strong>. Respondemos com os dados para Pix e enviamos a chave de ativação assim que o pagamento for confirmado.</p>
+      <p style="margin-top:12px">
+        <a class="btn" target="_blank" rel="noopener"
+           href="https://mail.google.com/mail/?view=cm&amp;to=jackdealmeida0@gmail.com&amp;su=Quero%20o%20Planeja%20Pro">Escrever pelo Gmail</a>
+        <a class="btn sec" href="mailto:jackdealmeida0@gmail.com?subject=Quero%20o%20Planeja%20Pro">Abrir meu programa de e-mail</a>
+      </p>
+      <p class="note" id="copiado" hidden>E-mail copiado. Cole no seu e-mail (Gmail, Outlook, Hotmail…).</p>
+    </div>
 
     <h2>Dúvidas</h2>
-    <p>Escreva para <a href="mailto:jackdealmeida0@gmail.com">jackdealmeida0@gmail.com</a>.</p>
+    <p>Escreva para <strong>jackdealmeida0@gmail.com</strong>.</p>
   </div>
 </main>
 
@@ -58,5 +116,22 @@
     © 2026 Jacqueline Oliveira · <a href="privacidade.html">Política de privacidade</a>
   </div>
 </footer>
+
+<script>
+  document.getElementById('copiar-email').addEventListener('click', function () {
+    var email = document.getElementById('email-vendas').textContent;
+    var aviso = document.getElementById('copiado');
+    function mostrar() { aviso.hidden = false; }
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(email).then(mostrar, mostrar);
+    } else {
+      var r = document.createRange();
+      r.selectNodeContents(document.getElementById('email-vendas'));
+      var s = window.getSelection(); s.removeAllRanges(); s.addRange(r);
+      try { document.execCommand('copy'); } catch (e) {}
+      mostrar();
+    }
+  });
+</script>
 </body>
 </html>

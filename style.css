@@ -65,3 +65,21 @@ a { color: var(--brand); }
   nav a { margin-left: 0; margin-right: 14px; }
   .btn.sec { margin-left: 0; margin-top: 8px; }
 }
+
+/* Página de compra: preço, telas e bloco de compra */
+.price { font-size: 2rem; font-weight: 700; margin: 0; }
+.price span { font-size: 1rem; font-weight: 400; color: var(--muted); }
+.feature { display: grid; grid-template-columns: 1fr 2fr; gap: 20px; align-items: start; margin: 28px 0; }
+.feature-text h3 { margin-top: 4px; font-size: 1.2rem; }
+.feature-text p { color: var(--muted); }
+.shot { width: 100%; height: auto; border: 1px solid var(--border); border-radius: 10px; box-shadow: 0 4px 14px rgba(0,0,0,.08); display: block; }
+.hero-shot { margin: 28px 0 8px; }
+.buy { margin-top: 28px; border-color: var(--brand); }
+.buy p { color: var(--text); margin: 6px 0; }
+.email-line { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; font-size: 1.1rem; }
+.btn.small { padding: 6px 12px; font-size: .9rem; margin-left: 0; cursor: pointer; font-family: inherit; }
+button.btn { border: none; cursor: pointer; font-family: inherit; font-size: 1rem; }
+button.btn.sec { border: 1px solid var(--brand); }
+@media (max-width: 720px) {
+  .feature { grid-template-columns: 1fr; }
+}
