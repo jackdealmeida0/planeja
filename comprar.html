@@ -37,6 +37,34 @@
         <li>Seus dados continuam só no seu computador</li>
       </ul>
       <a class="btn grad link-compra" href="https://pay.kiwify.com.br/r62a8mr" target="_blank" rel="noopener">Comprar agora</a>
+      <p class="ja-comprei"><a href="#pegar-chave">Já comprei: pegar minha chave</a></p>
+    </div>
+  </div>
+</section>
+
+<section class="wrap" id="pegar-chave">
+  <div class="card buy pegar">
+    <h2>Já comprei: pegar minha chave</h2>
+    <p>Digite o <strong>código do pedido</strong> e o <strong>e-mail usado na compra</strong>. O código
+      aparece no e-mail de confirmação da Kiwify (ex.: <code>8ABCD12</code>).</p>
+    <form id="form-chave" autocomplete="on">
+      <label>Código do pedido
+        <input id="campo-codigo" name="codigo" required maxlength="64" placeholder="Ex.: 8ABCD12" autocapitalize="characters" spellcheck="false">
+      </label>
+      <label>E-mail da compra
+        <input id="campo-email" name="email" type="email" required maxlength="200" placeholder="voce@email.com" autocomplete="email">
+      </label>
+      <button type="submit" class="btn grad" id="botao-chave">Mostrar minha chave</button>
+    </form>
+    <p class="aviso" id="aviso-chave" role="status" hidden></p>
+    <div id="resultado-chave" hidden>
+      <p>Chave de <strong id="nome-chave"></strong>:</p>
+      <div class="chave-box" id="texto-chave"></div>
+      <p style="display:flex; flex-wrap:wrap; gap:10px; align-items:center">
+        <button type="button" class="btn sec small" id="copiar-chave">Copiar chave</button>
+        <span class="note" id="copiada" hidden>Chave copiada!</span>
+      </p>
+      <p class="note">No Planeja, abra <em>Backup e Segurança → Planeja Pro</em>, cole a chave e clique em <strong>Ativar</strong>.</p>
     </div>
   </div>
 </section>
@@ -122,7 +150,7 @@
     <h2>Como funciona</h2>
     <ol class="steps">
       <li>Clique em <strong>Comprar agora</strong> e pague por Pix ou cartão.</li>
-      <li>Receba a <strong>chave de ativação</strong> no e-mail informado na compra, em poucos minutos. Se não aparecer, confira também o <strong>spam</strong> e a aba <strong>Promoções</strong>.</li>
+      <li>Receba a <strong>chave de ativação</strong> no e-mail informado na compra, em poucos minutos. Se não aparecer, confira o <strong>spam</strong> ou pegue a chave aqui mesmo, em <a href="#pegar-chave">Já comprei: pegar minha chave</a>.</li>
       <li>No Planeja, abra <em>Backup e Segurança → Planeja Pro</em>, cole a chave e clique em <strong>Ativar</strong>.</li>
     </ol>
 
@@ -142,6 +170,58 @@
     © 2026 Jacqueline Oliveira · <a href="privacidade.html">Política de privacidade</a>
   </div>
 </footer>
+
+<script>
+  (function () {
+    var SERVIDOR = 'https://planeja-vendas.planeja-servidor-vendas.workers.dev/chave';
+    var form = document.getElementById('form-chave');
+    var botao = document.getElementById('botao-chave');
+    var aviso = document.getElementById('aviso-chave');
+    var resultado = document.getElementById('resultado-chave');
+    var caixa = document.getElementById('texto-chave');
+
+    function avisar(msg) { aviso.textContent = msg; aviso.hidden = !msg; }
+
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var codigo = document.getElementById('campo-codigo').value.trim();
+      var email = document.getElementById('campo-email').value.trim();
+      if (!codigo || !email) { avisar('Preencha o código do pedido e o e-mail da compra.'); return; }
+      botao.disabled = true; botao.textContent = 'Buscando…';
+      avisar(''); resultado.hidden = true;
+      fetch(SERVIDOR, {
+        method: 'POST',
+        headers: { 'content-type': 'application/json' },
+        body: JSON.stringify({ codigo: codigo, email: email })
+      })
+        .then(function (r) { return r.json(); })
+        .then(function (d) {
+          if (d && d.ok && d.chave) {
+            caixa.textContent = d.chave;
+            document.getElementById('nome-chave').textContent = d.nome || '';
+            resultado.hidden = false;
+          } else {
+            avisar((d && d.erro) || 'Não foi possível buscar a chave. Tente de novo.');
+          }
+        })
+        .catch(function () {
+          avisar('Sem conexão com o servidor. Verifique a internet e tente de novo. Se continuar, escreva para jackdealmeida0@gmail.com.');
+        })
+        .then(function () { botao.disabled = false; botao.textContent = 'Mostrar minha chave'; });
+    });
+
+    document.getElementById('copiar-chave').addEventListener('click', function () {
+      var ok = function () { document.getElementById('copiada').hidden = false; };
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(caixa.textContent).then(ok, function () { selecionar(); ok(); });
+      } else { selecionar(); try { document.execCommand('copy'); } catch (x) {} ok(); }
+    });
+    function selecionar() {
+      var r = document.createRange(); r.selectNodeContents(caixa);
+      var s = window.getSelection(); s.removeAllRanges(); s.addRange(r);
+    }
+  })();
+</script>
 
 </body>
 </html>
