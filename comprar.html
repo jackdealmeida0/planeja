@@ -7,8 +7,7 @@
   <meta name="description" content="Planeja Pro: Análise, Orçamento geral, Projeção de saldo, Metas, Investimentos, Excel do mês e importação de faturas. R$ 29,90, pagamento único.">
   <link rel="stylesheet" href="style.css">
   <!--
-    QUANDO O CHECKOUT EXISTIR (Kiwify): troque o href dos botões com a classe
-    "link-compra" pelo link do checkout e apague o bloco id="contato-compra".
+    Checkout na Kiwify: os botões com a classe "link-compra" apontam para ele.
     O app aponta sempre para esta página, então trocar de plataforma não exige
     nova versão do app.
   -->
@@ -37,7 +36,7 @@
         <li>Chave de ativação por e-mail, funciona sem internet</li>
         <li>Seus dados continuam só no seu computador</li>
       </ul>
-      <a class="btn grad link-compra" href="#contato-compra">Comprar agora</a>
+      <a class="btn grad link-compra" href="https://pay.kiwify.com.br/r62a8mr" target="_blank" rel="noopener">Comprar agora</a>
     </div>
   </div>
 </section>
@@ -123,24 +122,14 @@
     <h2>Como funciona</h2>
     <ol class="steps">
       <li>Clique em <strong>Comprar agora</strong> e pague por Pix ou cartão.</li>
-      <li>Receba a <strong>chave de ativação</strong> no e-mail informado na compra.</li>
+      <li>Receba a <strong>chave de ativação</strong> no e-mail informado na compra, em poucos minutos. Se não aparecer, confira também o <strong>spam</strong> e a aba <strong>Promoções</strong>.</li>
       <li>No Planeja, abra <em>Backup e Segurança → Planeja Pro</em>, cole a chave e clique em <strong>Ativar</strong>.</li>
     </ol>
 
-    <div class="card buy" id="contato-compra">
+    <div class="card buy">
       <h3>Comprar o Planeja Pro — R$ 29,90</h3>
-      <p>As vendas online abrem em breve. Por enquanto, a compra é feita por e-mail: escreva para</p>
-      <p class="email-line">
-        <strong id="email-vendas">jackdealmeida0@gmail.com</strong>
-        <button type="button" class="btn sec small" id="copiar-email">Copiar e-mail</button>
-      </p>
-      <p>com o assunto <strong>“Quero o Planeja Pro”</strong>. Respondemos com os dados para Pix e enviamos a chave de ativação assim que o pagamento for confirmado.</p>
-      <p style="margin-top:14px; display:flex; flex-wrap:wrap; gap:10px">
-        <a class="btn grad" target="_blank" rel="noopener"
-           href="https://mail.google.com/mail/?view=cm&amp;to=jackdealmeida0@gmail.com&amp;su=Quero%20o%20Planeja%20Pro">Escrever pelo Gmail</a>
-        <a class="btn sec" href="mailto:jackdealmeida0@gmail.com?subject=Quero%20o%20Planeja%20Pro">Abrir meu programa de e-mail</a>
-      </p>
-      <p class="note" id="copiado" hidden>E-mail copiado. Cole no seu e-mail (Gmail, Outlook, Hotmail…).</p>
+      <p>Pagamento seguro pela Kiwify, por Pix ou cartão. A chave chega no seu e-mail logo depois da confirmação.</p>
+      <p style="margin-top:14px"><a class="btn grad link-compra" href="https://pay.kiwify.com.br/r62a8mr" target="_blank" rel="noopener">Comprar agora</a></p>
     </div>
 
     <h2>Dúvidas</h2>
@@ -154,21 +143,5 @@
   </div>
 </footer>
 
-<script>
-  document.getElementById('copiar-email').addEventListener('click', function () {
-    var email = document.getElementById('email-vendas').textContent;
-    var aviso = document.getElementById('copiado');
-    function mostrar() { aviso.hidden = false; }
-    if (navigator.clipboard && navigator.clipboard.writeText) {
-      navigator.clipboard.writeText(email).then(mostrar, mostrar);
-    } else {
-      var r = document.createRange();
-      r.selectNodeContents(document.getElementById('email-vendas'));
-      var s = window.getSelection(); s.removeAllRanges(); s.addRange(r);
-      try { document.execCommand('copy'); } catch (e) {}
-      mostrar();
-    }
-  });
-</script>
 </body>
 </html>
